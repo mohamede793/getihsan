@@ -49,7 +49,7 @@ export default function Hero() {
             >
               {/* Screen area */}
               <div className="relative w-full h-full rounded-[43px] max-md:rounded-[37px] max-sm:rounded-[33px] bg-[#0369A1] overflow-hidden">
-                <img src="/assets/screenshot.png" alt="Ihsan app" fetchpriority="high" decoding="async" className="absolute left-0 right-0 bottom-0 top-[3px] max-md:top-[2px] max-sm:top-[2px] w-full object-cover object-top" style={{ height: 'calc(100% - 3px)' }} />
+                <img src="/assets/screenshot.png" alt="Ihsan app" fetchpriority="high" decoding="async" className="absolute left-0 right-0 bottom-[14px] max-md:bottom-[12px] max-sm:bottom-[10px] top-[3px] max-md:top-[2px] max-sm:top-[2px] w-full object-cover object-top" />
 
                 {/* Dynamic Island — aligned with top of screenshot */}
                 <div className="absolute top-[7px] max-md:top-[6px] max-sm:top-[5px] left-1/2 -translate-x-1/2 z-20 w-[28%] aspect-[37/11] bg-black rounded-full" />

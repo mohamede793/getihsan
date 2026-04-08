@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="flex gap-6 max-sm:flex-col max-sm:gap-2">
             <Link to="/privacy" className="text-[13px] hover:text-white transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="text-[13px] hover:text-white transition-colors">Terms of Service</Link>
-            <a href="mailto:ihsanappios@gmail.com" className="text-[13px] hover:text-white transition-colors">Contact</a>
+            <Link to="/support" className="text-[13px] hover:text-white transition-colors">Support</Link>
           </div>
         </div>
         <div className="pt-4 text-center text-xs text-white/25">
