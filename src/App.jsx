@@ -21,7 +21,7 @@ function Home() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
