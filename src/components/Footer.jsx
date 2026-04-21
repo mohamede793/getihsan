@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 export default function Footer() {
+  const { t } = useTranslation()
   return (
     <footer className="bg-[#0B1929] text-white/60 pt-9 pb-5">
       <div className="max-w-[1080px] mx-auto px-6">
@@ -10,13 +12,13 @@ export default function Footer() {
             Ihsan
           </Link>
           <div className="flex gap-6 max-sm:flex-col max-sm:gap-2">
-            <Link to="/privacy" className="text-[13px] hover:text-white transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="text-[13px] hover:text-white transition-colors">Terms of Service</Link>
-            <Link to="/support" className="text-[13px] hover:text-white transition-colors">Support</Link>
+            <Link to="/privacy" className="text-[13px] hover:text-white transition-colors">{t('footer.privacy')}</Link>
+            <Link to="/terms" className="text-[13px] hover:text-white transition-colors">{t('footer.terms')}</Link>
+            <Link to="/support" className="text-[13px] hover:text-white transition-colors">{t('footer.support')}</Link>
           </div>
         </div>
         <div className="pt-4 text-center text-xs text-white/25">
-          &copy; 2025 Ihsan. All rights reserved.
+          {t('footer.copyright')}
         </div>
       </div>
     </footer>

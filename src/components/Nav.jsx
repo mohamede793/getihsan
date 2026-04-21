@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import { useLocation, Link, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useScrolled } from '../hooks/useScrolled'
+import LanguagePicker from './LanguagePicker'
 
 export default function Nav() {
   const scrolledRaw = useScrolled()
   const [open, setOpen] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const onHome = location.pathname === '/'
   const scrolled = !onHome || scrolledRaw
@@ -22,19 +25,24 @@ export default function Nav() {
     setOpen(false)
   }
 
+  const sections = [
+    ['#features', t('nav.features')],
+    ['#organizations', t('nav.organizations')],
+  ]
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all ${scrolled ? 'bg-white/95 backdrop-blur-md border-b border-gray-200 py-2.5' : 'py-4'}`}>
       <div className="max-w-[1080px] mx-auto px-6 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5">
           <img
-            src={scrolled ? '/assets/logo-sky.png' : '/assets/logo-white.png'}
+            src="/assets/icon.png"
             alt="Ihsan"
-            className="h-8 object-contain"
+            className="h-10 w-10 rounded-xl object-contain"
           />
         </Link>
 
         <div className={`flex gap-8 max-md:hidden`}>
-          {[['#features', 'Features'], ['#organizations', 'Organizations']].map(([href, label]) => (
+          {sections.map(([href, label]) => (
             <a
               key={href}
               href={href}
@@ -46,13 +54,9 @@ export default function Nav() {
           ))}
         </div>
 
-        <a
-          href="#download"
-          onClick={e => goToSection(e, '#download')}
-          className={`text-sm font-semibold px-5 py-2 rounded-[10px] transition-all max-md:hidden ${scrolled ? 'bg-blue text-white hover:bg-blue-deep' : 'bg-white text-blue-deep hover:bg-blue-pale'}`}
-        >
-          Download
-        </a>
+        <div className="max-md:hidden">
+          <LanguagePicker scrolled={scrolled} />
+        </div>
 
         <button
           onClick={() => setOpen(!open)}
@@ -67,9 +71,12 @@ export default function Nav() {
 
       {open && (
         <div className="md:hidden bg-white border-b border-gray-200 px-6 py-4 flex flex-col gap-3.5">
-          {[['#features', 'Features'], ['#organizations', 'Organizations']].map(([href, label]) => (
+          {sections.map(([href, label]) => (
             <a key={href} href={href} onClick={e => goToSection(e, href)} className="text-gray-900 text-sm font-medium">{label}</a>
           ))}
+          <div className="pt-2 border-t border-gray-100">
+            <LanguagePicker scrolled={true} />
+          </div>
         </div>
       )}
     </nav>

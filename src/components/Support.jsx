@@ -1,37 +1,30 @@
 import { Link } from 'react-router-dom'
-
-const sections = [
-  {
-    title: 'Contact Us',
-    body: 'For any questions, issues, or feedback, reach out to us at ihsanappios@gmail.com. We aim to respond within 48 hours.',
-  },
-  {
-    title: 'Manage Your Subscription',
-    body: 'Subscriptions are managed through the App Store. To cancel or change your plan:',
-    items: [
-      'Open Settings on your iPhone',
-      'Tap your name at the top',
-      'Tap Subscriptions',
-      'Select Ihsan and choose your option',
-    ],
-  },
-  {
-    title: 'Delete Your Data',
-    body: 'All personal data is stored locally on your device. To delete it, simply uninstall the Ihsan app. To request deletion of server-side data (community posts and anonymous analytics), contact us at ihsanappios@gmail.com.',
-  },
-  {
-    title: 'Crisis Resources',
-    body: 'Ihsan is not a substitute for professional help. If you are experiencing a mental health crisis, please call your local emergency services.',
-  },
-]
+import { useTranslation } from 'react-i18next'
 
 export default function Support() {
+  const { t } = useTranslation()
+  const sections = [
+    { title: t('support.contact_title'), body: t('support.contact_body') },
+    {
+      title: t('support.manage_title'),
+      body: t('support.manage_body'),
+      items: [
+        t('support.manage_item1'),
+        t('support.manage_item2'),
+        t('support.manage_item3'),
+        t('support.manage_item4'),
+      ],
+    },
+    { title: t('support.delete_title'), body: t('support.delete_body') },
+    { title: t('support.crisis_title'), body: t('support.crisis_body') },
+  ]
+
   return (
     <div className="min-h-screen bg-[#FAFAFA]">
       <div className="max-w-[680px] mx-auto px-6 pt-32 pb-20">
-        <Link to="/" className="text-sm text-blue font-medium hover:underline mb-8 inline-block">&larr; Back to home</Link>
-        <h1 className="text-3xl font-bold tracking-tight mb-2">Support</h1>
-        <p className="text-sm text-gray-400 mb-10">We're here to help.</p>
+        <Link to="/" className="text-sm text-blue font-medium hover:underline mb-8 inline-block">{t('common.back_home')}</Link>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">{t('support.title')}</h1>
+        <p className="text-sm text-gray-400 mb-10">{t('support.subtitle')}</p>
         {sections.map(s => (
           <div key={s.title} className="mb-8">
             <h2 className="text-lg font-bold mb-2">{s.title}</h2>
@@ -48,7 +41,7 @@ export default function Support() {
             )}
           </div>
         ))}
-        <p className="text-xs text-gray-400 mt-12">© 2026 Ihsan. All rights reserved.</p>
+        <p className="text-xs text-gray-400 mt-12">{t('support.copyright')}</p>
       </div>
     </div>
   )
